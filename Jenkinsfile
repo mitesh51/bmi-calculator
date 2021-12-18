@@ -27,7 +27,7 @@ pipeline {
         }    
         stage('Docker Image') {
             steps {
-                sh 'docker login -u mitesh51 -p Bestcredit@121'
+                
                 sh 'docker build -t bmi-calc'
             }
         }
