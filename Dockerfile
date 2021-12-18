@@ -1,2 +1,2 @@
 FROM nginx:1.19.0
-COPY build/ /usr/share/nginx/html
+COPY build/ /usr/share/nginx/html/bmi-calculator
