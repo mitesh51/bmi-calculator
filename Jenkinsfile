@@ -52,5 +52,10 @@ pipeline {
 				}
 			}
 		}
+	   	stage('EKS-Deployment') {
+			steps {
+				kubernetesDeploy configs: 'react-deployment.yaml', enableConfigSubstitution: false, kubeConfig: [path: ''], kubeconfigId: 'eks-kubeconfig', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
+			}
+		}
     }
 }
