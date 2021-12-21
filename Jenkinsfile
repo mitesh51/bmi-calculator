@@ -1,7 +1,7 @@
 pipeline {
 	agent any
     stages {
-			stage('CI') {
+		stage('CI') {
 			agent {
 				docker { image 'node:16.13.1-alpine' }
 			}
@@ -52,6 +52,20 @@ pipeline {
 				}
 			}
 		}
+	    	stage('Trivy Image Scanner') {
+			agent {
+				docker { 
+				    image 'aquasec/trivy:latest'
+				    args '--entrypoint='
+				    
+				}
+			}  
+			steps {
+				sh 'trivy help'
+				sh "trivy --cache-dir /tmp i 'mitesh51/bmi-calc:1.0'"
+			}
+		}
+
 	   	stage('EKS-Deployment') {
 			steps {
 				kubernetesDeploy configs: 'react-deployment.yaml', enableConfigSubstitution: false, kubeConfig: [path: ''], kubeconfigId: 'eks-kubeconfig', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
