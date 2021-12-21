@@ -81,8 +81,11 @@ pipeline {
 	}
 
 	stage('EKS-Deployment') {
+		agent {
+			label 'jenkins'
+		}
 		steps {
-			sh 'kubectl -f react-deployment.yaml'
+			sh 'kubectl apply -f react-deployment.yaml'
 		}
 	}
     }
