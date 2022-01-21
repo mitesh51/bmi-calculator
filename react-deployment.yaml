@@ -38,4 +38,6 @@ spec:
     port: 80
     targetPort: 80
     nodePort: 31317
- type: NodePort
+  type: LoadBalancer
+  externalIPs:
+  - 192.168.99.105
