@@ -7,7 +7,10 @@ pipeline {
     		}
     	}
     }
+stage('Approval') {
 input 'Ready for Load Testing?'
+}
+
 stage('load testing') {
     		steps {
     			bat 'cd F:\\1.DevOps\\2022\\apache-jmeter-5.4.3\\bin'
