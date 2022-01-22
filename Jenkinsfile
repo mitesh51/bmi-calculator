@@ -6,7 +6,6 @@ pipeline {
     			bat 'kubectl apply -f react-deployment.yaml'
     		}
     	}
-    }
 stage('Approval') {
 input 'Ready for Load Testing?'
 }
@@ -21,3 +20,5 @@ stage('load testing') {
     		}
     	}
 }
+
+    }
