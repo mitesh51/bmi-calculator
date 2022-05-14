@@ -1,4 +1,4 @@
 FROM node:16.13.1-alpine
 USER root
-RUN apt-get update
+RUN yum update
 USER jenkins
